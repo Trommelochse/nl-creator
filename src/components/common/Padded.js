@@ -1,9 +1,9 @@
 import React from 'react';
 export default (props) => {
-  const style = {
+  const defaultStyle = {
     padding: props.padding || '16px 24px'
-  }
-  console.log(style);
+  };
+  const style = Object.assign(defaultStyle, props.style);
   return (
     <div className="padded" style={style}>
       {props.children}

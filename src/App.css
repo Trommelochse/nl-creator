@@ -10,22 +10,21 @@ h1,h2,h3,h4,h5,h6,p {
 .brand-selector {
   background-color: #ddd;
   color: #fff;
-  padding: 12px;
-  border-radius: 50%;
-  opacity: 0.3;
-  transform: scale(0.75);
+  font-size: 12px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transform: scale(0.7);
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: all 150ms ease-out;
 }
 
 .brand-selector:hover {
-  opacity: 0.62;
-  transform: scale(0.88);
+  opacity: 0.9;
+  transform: scale(0.925);
 }
 
 .brand-selector.active {
-  opacity: 1;
-  transform: scale(1);
+  transform: scale(1.1);
 }
 
 .brand-selector.nb {
@@ -37,4 +36,12 @@ h1,h2,h3,h4,h5,h6,p {
 
 .brand-selector.bs {
   background-color: #0f0f0f;
+}
+
+pre.nlc {
+  background: #f2f2fa;
+  overflow: auto;
+  max-height: 18rem;
+  padding: 8px 16px;
+  margin: 0;
 }

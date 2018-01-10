@@ -1,48 +1,88 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
 import IconTextField from '../common/IconTextField.js';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Padded from '../common/Padded.js';
-import SectionTitle from '../SectionTitle.js';
 
 class NlcInputForm extends Component {
+
   render() {
+    const {
+      imgSrc,
+      headline,
+      body,
+      ctaText,
+      hyperlink,
+      onChangeImgSrc,
+      onChangeHeadline,
+      onChangeBody,
+      onChangeCtaText,
+      onChangeHyperlink,
+      onShowResult,
+      onClearForm,
+      onOpenPreview
+    } = this.props;
     return (
       <div className="NlcInputForm">
-        <SectionTitle>
-          Enter the content of your Newsletter
-        </SectionTitle>
         <Paper style={{marginBottom: 16}}>
           <Padded>
             <IconTextField
               floatingLabelText="Image URL"
               icon="fa-picture-o"
-              fullWidth />
+              onChange={onChangeImgSrc}
+              value={imgSrc}
+              fullWidth
+              />
             <IconTextField
-              floatingLabelText="Title"
+              floatingLabelText="Headline"
               icon="fa-header"
-              fullWidth />
+              onChange={onChangeHeadline}
+              value={headline}
+              fullWidth
+              />
             <IconTextField
               floatingLabelText="Content"
               icon="fa-align-justify"
+              onChange={onChangeBody}
+              value={body}
               multiLine
               fullWidth
-              rows={3} />
+              rows={3}
+              />
             <IconTextField
               floatingLabelText="CTA text"
               icon="fa-mouse-pointer"
-              fullWidth />
+              onChange={onChangeCtaText}
+              value={ctaText}
+              fullWidth
+              />
             <IconTextField
               floatingLabelText="Linking to"
               icon="fa-link"
-              fullWidth />
+              onChange={onChangeHyperlink}
+              value={hyperlink}
+              fullWidth
+              />
           </Padded>
           <Padded>
-            <RaisedButton label="Create HTML" primary></RaisedButton>
-            <FlatButton label="Clear" style={{float: 'right'}} secondary />
-            <FlatButton label="Preview" style={{float: 'right'}} primary></FlatButton>
+            <RaisedButton
+              label="Create HTML"
+              primary
+              onClick={onShowResult}
+              />
+            <FlatButton
+              label="Clear"
+              style={{float: 'right'}}
+              secondary
+              onClick={onClearForm}
+              />
+            <FlatButton
+              label="Preview"
+              style={{float: 'right'}}
+              primary
+              onClick={onOpenPreview}
+              />
           </Padded>
         </Paper>
       </div>
