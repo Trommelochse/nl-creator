@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "set PORT=3031 && react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build"
   },
   "engines": {
     "node": "8.9.3"
