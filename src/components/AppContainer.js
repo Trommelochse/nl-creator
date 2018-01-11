@@ -106,8 +106,8 @@ class AppContainer extends Component {
     this.setState({stepIndex: 0})
   }
   onClearForm() {
-    console.log(this.clearState);
     this.clearState.brand = this.state.brand;
+    this.clearState.previousImages = localStorage.getImages();
     this.setState(this.clearState)
   }
 
