@@ -2,14 +2,19 @@ import React from 'react';
 
 const BannerThumb = props => {
   const style = {
-    marginBottom: 8
+    cursor: 'pointer'
   }
   const imageStyle = {
     width: '100%',
     height: 'auto',
   }
   return (
-    <div style={style}>
+    <div
+      className="BannerThumb"
+      style={style}
+      onClick={props.onClick}
+      value={props.src}
+      >
       <img
         src={props.src}
         style={imageStyle}

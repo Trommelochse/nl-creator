@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
-import {List, ListItem} from 'material-ui/List';
 import Padded from './common/Padded.js';
 import BannerThumb from './nlc/BannerThumb.js';
 import BrandSelector from './nlc/BrandSelector.js';
@@ -20,7 +19,6 @@ const AsideSection = props => {
     bs : {
       background: '#222326',
       color: '#CC0000',
-      fontWeight: 300
     }
   }
 
@@ -54,7 +52,6 @@ class Aside extends Component {
       gridColumn: 'span 4',
       height: 200
     };
-    const temp = [1,2,34,3]
     return (
       <aside className="Aside" style={style}>
         <AsideSection brand={brand} title="Brand">
@@ -62,13 +59,15 @@ class Aside extends Component {
         </AsideSection>
         <AsideSection brand={brand} title="Previous Banners">
           <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '8px'}}>
-            { previousImages.map( src => <BannerThumb src={src}/> )}
+            { previousImages.map( src => {
+              return (
+                <BannerThumb
+                  onClick={this.props.onChangeImgSrc}
+                  key={src}
+                  src={src}/>
+              )
+            } )}
           </div>
-        </AsideSection>
-        <AsideSection  brand={brand} title="Previous Links">
-          <List>
-            { temp.map( e => <ListItem primaryText={'https://' + e*536 + '.de'} /> )}
-          </List>
         </AsideSection>
       </aside>
     )

@@ -29,7 +29,10 @@ class AppContainer extends Component {
       resultString: '',
       previousImages: []
     }
-    this.clearState = Object.assign({}, this.state);
+    this.clearState = {
+      ...this.state,
+      previousImages: localStorage.getImages()
+    };
 
     this.onChangeBrand = this.onChangeBrand.bind(this);
     this.onChangeImgSrc = this.onChangeImgSrc.bind(this);
@@ -48,12 +51,12 @@ class AppContainer extends Component {
   componentDidMount() {
     this.setState({previousImages: localStorage.getImages()})
   }
-
   onChangeBrand(brand) {
-    this.setState({brand})
+    const resultString = this.calculateResult(brand);
+    this.setState({brand, resultString})
   }
   onChangeImgSrc(ev) {
-    this.setState({imgSrc: ev.target.value})
+    this.setState({imgSrc: ev.target.value || ev.target.src})
   }
   onChangeHeadline(ev) {
     this.setState({headline: ev.target.value})
@@ -68,13 +71,13 @@ class AppContainer extends Component {
     this.setState({hyperlink: ev.target.value})
   }
   onOpenPreview() {
-    this.calculateResult();
-    this.setState({showsPreview: true })
+    const resultString = this.calculateResult();
+    this.setState({resultString, showsPreview: true })
   }
   onClosePreview() {
     this.setState({showsPreview: false })
   }
-  calculateResult() {
+  calculateResult(brandArg) {
     const {
       brand,
       imgSrc,
@@ -84,14 +87,20 @@ class AppContainer extends Component {
       ctaText
     } = this.state;
     const bodyConverted = body.split('\n').join('<br>');
-    this.setState({
-      resultString: htmlTemplates[brand].create(imgSrc,hyperlink,headline,bodyConverted,ctaText)
-    });
+    return htmlTemplates[brandArg || brand].create(imgSrc,hyperlink,headline,bodyConverted,ctaText)
   }
 
   onShowResult() {
-    this.calculateResult();
-    this.setState({stepIndex: 1})
+    const {imgSrc} = this.state;
+    const resultString = this.calculateResult();
+    if (imgSrc.match(/http(s)?:\/\/(.)*\.(jpg|jpeg|png|gif)/)) {
+      localStorage.addImage(imgSrc);
+    }
+    this.setState({
+      resultString,
+      stepIndex: 1,
+      previousImages: localStorage.getImages()
+    })
   }
   onShowInputForm() {
     this.setState({stepIndex: 0})
@@ -123,6 +132,7 @@ class AppContainer extends Component {
               />
             <Aside
               onChangeBrand={this.onChangeBrand}
+              onChangeImgSrc={this.onChangeImgSrc}
               {...this.state}
               />
           </div>

@@ -38,6 +38,10 @@ h1,h2,h3,h4,h5,h6,p {
   background-color: #0f0f0f;
 }
 
+.BannerThumb:hover {
+  opacity: 0.8;
+}
+
 pre.nlc {
   background: #f2f2fa;
   overflow: auto;
