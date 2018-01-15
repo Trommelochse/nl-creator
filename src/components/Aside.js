@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import Padded from './common/Padded.js';
 import BannerThumb from './nlc/BannerThumb.js';
 import BrandSelector from './nlc/BrandSelector.js';
@@ -52,6 +53,9 @@ class Aside extends Component {
       gridColumn: 'span 4',
       height: 200
     };
+    const radioButtonStyle = {
+      marginBottom: 8
+    }
     return (
       <aside className="Aside" style={style}>
         <AsideSection brand={brand} title="Brand">
@@ -68,6 +72,24 @@ class Aside extends Component {
               )
             } )}
           </div>
+        </AsideSection>
+        <AsideSection brand={brand} title="Terms and Conditions">
+          <RadioButtonGroup
+            name="termsType"
+            defaultSelected="none"
+            onChange={this.props.onChangeTermsType}
+            >
+            <RadioButton
+              label="None"
+              value="none"
+              style={radioButtonStyle}
+              />
+            <RadioButton
+              label="Single Line"
+              value="single"
+              style={radioButtonStyle}
+              />
+          </RadioButtonGroup>
         </AsideSection>
       </aside>
     )

@@ -4,6 +4,7 @@ import IconTextField from '../common/IconTextField.js';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Padded from '../common/Padded.js';
+import TermsModule from './TermsModule.js'
 
 class NlcInputForm extends Component {
 
@@ -14,6 +15,7 @@ class NlcInputForm extends Component {
       body,
       ctaText,
       hyperlink,
+      termsType,
       onChangeImgSrc,
       onChangeHeadline,
       onChangeBody,
@@ -21,7 +23,9 @@ class NlcInputForm extends Component {
       onChangeHyperlink,
       onShowResult,
       onClearForm,
-      onOpenPreview
+      onOpenPreview,
+      onChangeSublineText,
+      onChangeSublineLink
     } = this.props;
     return (
       <div className="NlcInputForm">
@@ -64,6 +68,14 @@ class NlcInputForm extends Component {
               value={hyperlink}
               fullWidth
               />
+            {
+              termsType !== 'none' ?
+              <TermsModule
+                termsType={termsType}
+                onChangeText={onChangeSublineText}
+                onChangeLink={onChangeSublineLink}
+                /> : null
+            }
           </Padded>
           <Padded>
             <RaisedButton

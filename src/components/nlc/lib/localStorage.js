@@ -8,10 +8,9 @@ export const addImage = url => {
       tempArr.push(temp);
     }
   }
-  console.log(tempArr);
   if (!tempArr.includes(url)) {
     if (tempArr.length > 3) {
-      tempArr.pop();      
+      tempArr.pop();
     }
     tempArr.unshift(url);
   }

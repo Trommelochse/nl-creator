@@ -29,7 +29,7 @@ export default class NlcPreviewPopup extends Component {
           open={showsPreview}
           onRequestClose={onClosePreview}
         >
-          <iframe title="nl-preview" srcdoc={resultString} style={{
+          <iframe title="nl-preview" srcDoc={resultString} style={{
               width: '95%',
               height: 500,
               margin: '0 2.5%',

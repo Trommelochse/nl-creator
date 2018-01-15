@@ -27,7 +27,10 @@ class AppContainer extends Component {
       hyperlink: '',
       showsPreview: false,
       resultString: '',
-      previousImages: []
+      previousImages: [],
+      termsType: 'none',
+      sublineText: '',
+      sublineLink: '',
     }
     this.clearState = {
       ...this.state,
@@ -40,12 +43,15 @@ class AppContainer extends Component {
     this.onChangeBody = this.onChangeBody.bind(this);
     this.onChangeCtaText = this.onChangeCtaText.bind(this);
     this.onChangeHyperlink = this.onChangeHyperlink.bind(this);
+    this.onChangeTermsType = this.onChangeTermsType.bind(this);
     this.calculateResult = this.calculateResult.bind(this);
     this.onShowResult = this.onShowResult.bind(this);
     this.onShowInputForm = this.onShowInputForm.bind(this);
     this.onClearForm = this.onClearForm.bind(this);
     this.onOpenPreview = this.onOpenPreview.bind(this);
     this.onClosePreview = this.onClosePreview.bind(this);
+    this.onChangeSublineText = this.onChangeSublineText.bind(this);
+    this.onChangeSublineLink = this.onChangeSublineLink.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +83,9 @@ class AppContainer extends Component {
   onClosePreview() {
     this.setState({showsPreview: false })
   }
+  onChangeTermsType(ev) {
+    this.setState({termsType: ev.target.value})
+  }
   calculateResult(brandArg) {
     const {
       brand,
@@ -84,10 +93,23 @@ class AppContainer extends Component {
       hyperlink,
       headline,
       body,
-      ctaText
+      ctaText,
+      termsType,
+      sublineText,
+      sublineLink
     } = this.state;
     const bodyConverted = body.split('\n').join('<br>');
-    return htmlTemplates[brandArg || brand].create(imgSrc,hyperlink,headline,bodyConverted,ctaText)
+    const template = htmlTemplates[brandArg || brand];
+    const terms = termsType === 'single' ?
+      template.createSimpleTerms(sublineText, sublineLink) : undefined;
+    return template.create(
+      imgSrc,
+      hyperlink,
+      headline,
+      bodyConverted,
+      ctaText,
+      terms
+    )
   }
 
   onShowResult() {
@@ -110,6 +132,12 @@ class AppContainer extends Component {
     this.clearState.previousImages = localStorage.getImages();
     this.setState(this.clearState)
   }
+  onChangeSublineText(ev) {
+    this.setState({sublineText: ev.target.value});
+  }
+  onChangeSublineLink(ev) {
+    this.setState({sublineLink: ev.target.value});
+  }
 
   render() {
     return (
@@ -128,11 +156,14 @@ class AppContainer extends Component {
               onClearForm={this.onClearForm}
               onOpenPreview={this.onOpenPreview}
               onClosePreview={this.onClosePreview}
+              onChangeSublineText={this.onChangeSublineText}
+              onChangeSublineLink={this.onChangeSublineLink}
               {...this.state}
               />
             <Aside
               onChangeBrand={this.onChangeBrand}
               onChangeImgSrc={this.onChangeImgSrc}
+              onChangeTermsType={this.onChangeTermsType}
               {...this.state}
               />
           </div>

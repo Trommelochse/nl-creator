@@ -1,5 +1,5 @@
 export const nb = {
-  create: (imgSrc, hyperlink, headline, body, ctaText) => {
+  create: (imgSrc, hyperlink, headline, body, ctaText, terms) => {
     return `
     <table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#FFFFFF;" bgcolor="#FFFFFF" align="center" class="moduleContainer">
       <tr>
@@ -49,15 +49,25 @@ export const nb = {
                 </table>
               </td>
             </tr>
+            ${terms || ''}
           </table>
         </td>
       </tr>
     </table>`
+  },
+  createSimpleTerms: (text,url) => {
+    let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+    link = link.replace(/%%/, `</a>`);
+    return `<tr>
+              <td height="17" style="mso-line-height-rule:exactly;font-family: Verdana, Helvetica, Arial, sans-serif;text-decoration:none;color:#666666;font-weight: 300;font-size:12px;line-height:17px; padding: 0px 10px 0px 10px;" align="center">
+                <p><em>${link}</em></p>
+              </td>
+            </tr>`
   }
 }
 
 export const be = {
-  create: (imgSrc, hyperlink, headline, body, ctaText) => {
+  create: (imgSrc, hyperlink, headline, body, ctaText, terms) => {
     return `
     <table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#FFFFFF;" bgcolor="#FFFFFF" align="center" class="moduleContainer">
       <tr>
@@ -97,7 +107,8 @@ export const be = {
                         <tr>
                           <td height="41" style="border-bottom: 2px solid #ba510b;border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px;" align="center">
                             <a href="${hyperlink}" target="_blank" style="display:block;text-decoration:none;border:0;text-align: center;font-family: Helvetica, Arial, sans-serif;color:#FFFFFF;font-weight: 500;font-size:22px;line-height:25px;padding:8px 22px 8px 22px;" class="NoPaddingLeft NoPaddingRight">
-                            <!--[if mso]><table border="0" cellspacing="0" cellpadding="0">
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td style="line-height:1px;font-size:1px;padding:0px 22px 0px 22px;">
                                 <a href="${hyperlink}" target="_blank" style="text-decoration:none;border:0;text-align: center;font-family: Helvetica, Arial, sans-serif;color:#FFFFFF;font-weight: 500;font-size:22px;line-height:25px;"><![endif]-->
@@ -116,16 +127,26 @@ export const be = {
                 </table>
               </td>
             </tr>
+            ${terms || ''}
           </table>
         </td>
       </tr>
     </table>
     `
+  },
+  createSimpleTerms: (text,url) => {
+    let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+    link = link.replace(/%%/, `</a>`);
+    return `<tr>
+              <td height="18" style="mso-line-height-rule:exactly;font-family: Helvetica, Arial, sans-serif;text-decoration:none;color:#666666;font-weight: 300;font-size:13px;line-height:18px;padding:15px 10px 0px 10px;" align="center">
+                <p><em>${link}</em></p>
+              </td>
+            </tr>`
   }
 }
 
 export const bs = {
-  create: (imgSrc, hyperlink, headline, body, ctaText) => {
+  create: (imgSrc, hyperlink, headline, body, ctaText, terms) => {
     return `<table width="540" cellspacing="0" cellpadding="0" border="0" align="center">
   <tbody>
     <tr>
@@ -185,11 +206,21 @@ export const bs = {
                 </table>
               </td>
             </tr>
+            ${terms || ''}
           </tbody>
         </table>
       </td>
     </tr>
   </tbody>
 </table>`
+  },
+createSimpleTerms: (text,url) => {
+  let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+  link = link.replace(/%%/, `</a>`);
+  return `<tr>
+            <td style="font-family: Helvetica, Arial, sans-serif; text-decoration: none; color: #999999; font-weight: normal; font-size: 12px; line-height: 22px; padding: 17px 0px 0px; height: 17px;" align="center">
+              <p><em>${link}</em></p>
+            </td>
+          </tr>`
   }
 }
