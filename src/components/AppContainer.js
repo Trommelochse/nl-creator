@@ -18,7 +18,7 @@ class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      brand: 'be',
+      brand: localStorage.getBrand(),
       stepIndex: 0,
       imgSrc: '',
       headline: '',
@@ -34,6 +34,7 @@ class AppContainer extends Component {
     }
     this.clearState = {
       ...this.state,
+      brand: localStorage.getBrand(),
       previousImages: localStorage.getImages()
     };
 
@@ -59,6 +60,7 @@ class AppContainer extends Component {
   }
   onChangeBrand(brand) {
     const resultString = this.calculateResult(brand);
+    localStorage.setBrand(brand);
     this.setState({brand, resultString})
   }
   onChangeImgSrc(ev) {

@@ -30,6 +30,14 @@ export const getImages = () => {
   return images
 }
 
+export const setBrand = brand => {
+  ls.setItem('brand', brand)
+}
+
+export const getBrand = () => {
+  return ls.getItem('brand') || 'be'
+}
+
 export const clear = () => {
   for (let i=0; i<4; i++) {
     ls.removeItem('image'+i);

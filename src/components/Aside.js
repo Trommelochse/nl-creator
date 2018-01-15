@@ -7,7 +7,6 @@ import BannerThumb from './nlc/BannerThumb.js';
 import BrandSelector from './nlc/BrandSelector.js';
 
 const AsideSection = props => {
-
   const brandStyles = {
     be: {
       background: '#2D2D2D',
