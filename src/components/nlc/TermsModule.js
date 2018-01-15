@@ -7,11 +7,13 @@ const SingleLineField = props => (
       floatingLabelText="Terms sub-line (mark link with %%text%%)"
       icon="fa-info"
       fullWidth
+      value={props.sublineText}
       onChange={props.onChangeText}
     />
     <IconTextField
       floatingLabelText="Link to T&Cs"
       fullWidth
+      value={props.sublineLink}
       onChange={props.onChangeLink}
     />
   </div>
@@ -37,6 +39,8 @@ export default class TermsModule extends Component {
         {
           this.props.termsType === 'single' ?
           <SingleLineField
+            sublineText={this.props.sublineText}
+            sublineLink={this.props.sublineLink}
             onChangeText={this.props.onChangeText}
             onChangeLink={this.props.onChangeLink}
             /> : null

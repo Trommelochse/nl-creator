@@ -76,7 +76,7 @@ class Aside extends Component {
         <AsideSection brand={brand} title="Terms and Conditions">
           <RadioButtonGroup
             name="termsType"
-            defaultSelected="none"
+            valueSelected={this.props.termsType}
             onChange={this.props.onChangeTermsType}
             >
             <RadioButton

@@ -16,6 +16,8 @@ class NlcInputForm extends Component {
       ctaText,
       hyperlink,
       termsType,
+      sublineText,
+      sublineLink,
       onChangeImgSrc,
       onChangeHeadline,
       onChangeBody,
@@ -72,6 +74,8 @@ class NlcInputForm extends Component {
               termsType !== 'none' ?
               <TermsModule
                 termsType={termsType}
+                sublineText={sublineText}
+                sublineLink={sublineLink}
                 onChangeText={onChangeSublineText}
                 onChangeLink={onChangeSublineLink}
                 /> : null
