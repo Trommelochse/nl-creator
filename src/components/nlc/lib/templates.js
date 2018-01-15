@@ -56,7 +56,7 @@ export const nb = {
     </table>`
   },
   createSimpleTerms: (text,url) => {
-    let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+    let link = text.replace(/%%/, `<a href="${url}" target="_blank" style="color: #006eb4">`);
     link = link.replace(/%%/, `</a>`);
     return `<tr>
               <td height="17" style="mso-line-height-rule:exactly;font-family: Verdana, Helvetica, Arial, sans-serif;text-decoration:none;color:#666666;font-weight: 300;font-size:12px;line-height:17px; padding: 0px 10px 0px 10px;" align="center">
@@ -135,7 +135,7 @@ export const be = {
     `
   },
   createSimpleTerms: (text,url) => {
-    let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+    let link = text.replace(/%%/, `<a href="${url}" target="_blank" style="color: #ff6600">`);
     link = link.replace(/%%/, `</a>`);
     return `<tr>
               <td height="18" style="mso-line-height-rule:exactly;font-family: Helvetica, Arial, sans-serif;text-decoration:none;color:#666666;font-weight: 300;font-size:13px;line-height:18px;padding:15px 10px 0px 10px;" align="center">
@@ -215,7 +215,7 @@ export const bs = {
 </table>`
   },
 createSimpleTerms: (text,url) => {
-  let link = text.replace(/%%/, `<a href="${url}" target="_blank">`);
+  let link = text.replace(/%%/, `<a href="${url}" target="_blank" style="color: #aaaaaa">`);
   link = link.replace(/%%/, `</a>`);
   return `<tr>
             <td style="font-family: Helvetica, Arial, sans-serif; text-decoration: none; color: #999999; font-weight: normal; font-size: 12px; line-height: 22px; padding: 17px 0px 0px; height: 17px;" align="center">
